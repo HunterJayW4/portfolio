@@ -1,8 +1,8 @@
 import React, { useRef } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
-import projectBackground from '../assets/gr86.jpg' // ✅ Your new background image
+import ehrBackground from '../assets/hospital.jpeg' // ✅ Put a good EHR/tech/medical styled background here
 
-export default function ProjectIntro() {
+export default function EHRProject() {
   const ref = useRef()
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -12,7 +12,7 @@ export default function ProjectIntro() {
   const scale = useTransform(scrollYProgress, [0, 1], [0.9, 1.05])
   const opacity = useTransform(scrollYProgress, [0, 1], [0, 1])
   const y = useTransform(scrollYProgress, [0, 1], [50, 0])
-  const gridY = useTransform(scrollYProgress, [0, 1], ["0%", "10%"]) // only the grid moves slightly
+  const gridY = useTransform(scrollYProgress, [0, 1], ["0%", "10%"])
 
   return (
     <section
@@ -26,14 +26,14 @@ export default function ProjectIntro() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 0.4 }}
           transition={{ duration: 1.5 }}
-          style={{ backgroundImage: `url(${projectBackground})` }}
+          style={{ backgroundImage: `url(${ehrBackground})` }}
           className="absolute inset-0 min-h-screen bg-cover bg-center bg-fixed bg-no-repeat"
         />
 
-        {/* Dark gradient overlay */}
+        {/* Dark overlay */}
         <div className="absolute inset-0 bg-gradient-to-br from-[#0f172a]/70 via-[#1e293b]/80 to-[#0f172a]/90 z-10" />
 
-        {/* Animated grid lines */}
+        {/* Optional grid or lines */}
         <motion.div
           style={{ y: gridY }}
           className="absolute top-0 left-0 w-full h-full bg-[url('/bg-grid.svg')] opacity-10 mix-blend-overlay z-20"
@@ -49,29 +49,27 @@ export default function ProjectIntro() {
         transition={{ type: 'spring', stiffness: 60 }}
       >
         <h2 className="text-4xl md:text-6xl font-extrabold mb-6 tracking-tight">
-          Pong on an <span className="text-amber-400">STM32 Microcontroller</span>
+          Custom EHR Suite for <span className="text-green-400">Integrity Mental Health</span>
         </h2>
 
         <p className="text-lg md:text-xl leading-relaxed text-slate-300 mb-6">
-          I’m a programmer at heart, and this was my first time diving deep into the world of hardware.
-          Before this course, I had only taken two Electrical Engineering classes. Still, I wanted to
-          pay homage to a video game classic — <span className="text-white font-semibold">Pong</span> — and bring it to life from the bare metal.
+          For my senior capstone project at Boise State University, I teamed up with two classmates to create a custom Electronic Health Records (EHR) system for a local mental health clinic — <span className="text-white font-semibold">Integrity Mental Health of Idaho</span>.
         </p>
 
         <p className="text-lg md:text-xl leading-relaxed text-slate-300 mb-6">
-          I soldered potentiometer-based joysticks (burned my fingers in the process 🔥), figured out how to
-          interface them with the STM32 chip, and wrote all the logic to relay input to the LCD. The game
-          was programmed entirely in <span className="text-teal-300">C</span>, a language I had only touched a few times before.
+          We developed a full-stack prototype using <span className="text-teal-300">React</span> for the frontend, <span className="text-teal-300">Node.js</span> for the backend, and <span className="text-teal-300">SQLite</span> for lightweight database storage. The project took place over five months, with monthly client meetings to align technical progress with real-world clinical needs.
         </p>
 
         <p className="text-lg md:text-xl leading-relaxed text-slate-300 mb-6">
-          I also had to solve the physics behind the bouncing ball — which ended up being simpler than expected —
-          and bring together everything under real-time constraints. With only three weeks to source the parts and build
-          the whole thing, this project pushed me hard. But it’s also the university project I’m most proud of.
+          Throughout the process, we adjusted course based on evolving requirements — enhancing patient profile management, intake form handling, appointment scheduling workflows, and ensuring the system was built for future scalability.
+        </p>
+
+        <p className="text-lg md:text-xl leading-relaxed text-slate-300 mb-6">
+          At the end of the project, we delivered a working system prototype that left our client satisfied and excited to continue the development journey. The experience sharpened my skills in client communication, agile adaptation, and full-stack healthcare application design.
         </p>
 
         <p className="text-md text-slate-400 italic">
-          Built from scratch. No engines. Just wires, code, and a whole lot of learning.
+          Stack used: React · Node.js · SQLite · Tailwind CSS · Express · Full-Stack Development · Client Communication
         </p>
       </motion.div>
     </section>

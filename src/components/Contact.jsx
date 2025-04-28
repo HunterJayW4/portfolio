@@ -50,12 +50,12 @@ export default function Contact() {
         </div>
 
         <div className="mt-10 text-slate-400 text-sm space-y-2">
-          <p>Email: <span className="text-white font-medium">you@example.com</span></p>
-          <p>Phone: <span className="text-white font-medium">(555) 123-4567</span></p>
+          <p>Email: <span className="text-white font-medium">hunterjayw@gmail.com</span></p>
+          <p>Phone: <span className="text-white font-medium">(208) 890-1281</span></p>
           <p>
             LinkedIn:{' '}
-            <a href="https://linkedin.com/in/yourprofile" className="text-teal-400 hover:underline" target="_blank" rel="noreferrer">
-              linkedin.com/in/yourprofile
+            <a href="https://www.linkedin.com/in/hunter-walp-9a3b44288/" className="text-teal-400 hover:underline" target="_blank" rel="noreferrer">
+            https://www.linkedin.com/in/hunter-walp-9a3b44288/
             </a>
           </p>
         </div>

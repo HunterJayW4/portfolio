@@ -1,5 +1,6 @@
 import React, { useRef } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
+import heroBackground from '../assets/hero-bg.jpg'
 
 export default function Hero() {
   const ref = useRef()
@@ -11,32 +12,35 @@ export default function Hero() {
   const opacity = useTransform(scrollYProgress, [0, 1], [0.5, 1])
   const scale = useTransform(scrollYProgress, [0, 1], [0.95, 1])
   const y = useTransform(scrollYProgress, [0, 1], [40, 0])
+  const bgY = useTransform(scrollYProgress, [0, 1], [0, 50]) // slight scroll for parallax effect
 
   return (
     <section
       ref={ref}
       className="relative min-h-screen flex flex-col justify-center items-center px-6 text-center text-white overflow-hidden"
     >
-      {/* Background image layer */}
-      <div
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{
-          backgroundImage: `url('/images/hero-bg.jpg')`, // update this path to your image
-          opacity: 0.15
-        }}
-      ></div>
+      {/* Animated background image */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 0.5 }}
+        transition={{ duration: 1.5 }}
+        style={{ backgroundImage: `url(${heroBackground})`, y: bgY }}
+        className="absolute inset-0 min-h-screen bg-cover bg-center bg-fixed bg-no-repeat"
+      />
 
-      {/* Optional overlay for contrast */}
-      <div className="absolute inset-0 bg-gradient-to-b from-slate-900/80 to-slate-800/90 z-0" />
+      {/* Dark overlay */}
+      <div className="absolute inset-0 bg-gradient-to-b from-slate-900/70 to-slate-800/80 z-0" />
 
+      {/* Main content */}
       <motion.div
         style={{ opacity, scale, y }}
         className="max-w-4xl z-10"
         transition={{ duration: 0.6, ease: 'easeOut' }}
       >
         <h1 className="text-5xl md:text-7xl font-extrabold mb-6 leading-tight tracking-tight">
-          Hi, I’m <span className="text-teal-400">Hunter Walp</span>
+          Hi, I’m <span className="text-red-400">Hunter Walp</span>
         </h1>
+
         <p className="text-xl md:text-2xl text-slate-300 mb-6">
           A Boise-based software developer building <span className="text-white font-semibold">medical data interfaces</span>,
           <span className="text-white font-semibold"> embedded hardware</span>, and dynamic full-stack applications.
